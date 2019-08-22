@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './Login.css';
 import logo from "../assets/logo.svg";
-import api from "../services/api";
+import api from "../services/api"; 
  
 
 export default function Login ({ history }) {
@@ -12,9 +12,12 @@ export default function Login ({ history }) {
         const response = await api.post('/devs', {
             username,
         });
-        console.log(response);
 
-        history.push('/main');
+        //console.log(response);
+
+        const { _id } = response.data;
+
+        history.push(`/dev/${_id}`);
     }
 
     return (
